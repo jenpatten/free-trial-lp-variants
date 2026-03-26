@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopify — Start your free trial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --shopify-green:#95BF47;
+  --shopify-dark-green:#5E8E3E;
+  --black:#000;
+  --white:#fff;
+  --gray-50:#fafaf8;
+  --gray-100:#f3f3ef;
+  --gray-200:#e3e3dd;
+  --gray-400:#8a8a80;
+  --gray-600:#5c5c52;
+  --gray-800:#2a2a24;
+  --radius:16px;
+  --radius-sm:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:var(--white);color:var(--gray-800)}
+
+/* ── GLOBAL NAV ── */
+.nav{
+  position:sticky;top:0;z-index:200;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gray-200);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px;letter-spacing:-.5px;cursor:pointer}
+.nav-logo svg{height:32px}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--gray-600);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--black)}
+.nav-cta{
+  background:var(--black);color:var(--white);
+  padding:10px 22px;border-radius:var(--radius-sm);
+  font-size:14px;font-weight:600;border:none;cursor:pointer;
+  text-decoration:none;transition:background .15s;
+}
+.nav-cta:hover{background:#333}
+
+/* ── DIRECTORY PAGE ── */
+.directory{display:none;min-height:100vh}
+.directory.active{display:block}
+
+.dir-hero{
+  padding:100px 48px 80px;text-align:center;
+  background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%);
+}
+.dir-hero h1{
+  font-size:56px;font-weight:700;line-height:1.1;
+  letter-spacing:-2px;max-width:700px;margin:0 auto 16px;
+}
+.dir-hero p{font-size:18px;color:var(--gray-600);max-width:520px;margin:0 auto}
+.dir-badge{
+  display:inline-block;margin-bottom:24px;
+  font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  color:var(--shopify-dark-green);background:#eef5e6;
+  padding:6px 14px;border-radius:20px;
+}
+
+.dir-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:20px;padding:0 48px 100px;max-width:1200px;margin:0 auto;
+}
+.dir-card{
+  background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);
+  overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  text-decoration:none;color:inherit;display:block;
+}
+.dir-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+
+.dir-card-top{
+  padding:28px 28px 0;display:flex;gap:8px;flex-wrap:wrap;
+}
+.tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.4px;
+  text-transform:uppercase;padding:4px 10px;border-radius:20px;
+}
+.tag-creator{background:#f0e6ff;color:#6b21a8}
+.tag-brand{background:#e0f2fe;color:#0369a1}
+.tag-none{background:#fef3c7;color:#92400e}
+.tag-pattern{background:#eef5e6;color:#3d6b22}
+
+.dir-card-body{padding:20px 28px 28px}
+.dir-card-headline{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:10px;letter-spacing:-.3px}
+.dir-card-slug{
+  font-size:13px;color:var(--shopify-dark-green);font-weight:600;
+  margin-bottom:12px;display:flex;align-items:center;gap:6px;
+}
+.dir-card-slug::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--shopify-green)}
+.dir-card-meta{font-size:13px;color:var(--gray-400);line-height:1.5}
+.dir-card-chars{
+  position:absolute;top:16px;right:16px;
+  font-size:11px;font-weight:600;color:var(--gray-400);
+  background:var(--gray-100);padding:3px 8px;border-radius:6px;
+}
+.dir-card{position:relative}
+
+/* ── LANDING PAGE ── */
+.lp-page{display:none;min-height:100vh}
+.lp-page.active{display:block}
+
+.lp-hero-section{
+  min-height:70vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:120px 48px 80px;text-align:center;position:relative;overflow:hidden;
+}
+.lp-hero-section::before{
+  content:'';position:absolute;
+  top:-200px;left:50%;transform:translateX(-50%);
+  width:1200px;height:1200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(149,191,71,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+
+.lp-headline{
+  font-size:clamp(36px,5vw,64px);font-weight:700;
+  line-height:1.08;letter-spacing:-2px;
+  max-width:780px;margin:0 auto 40px;
+  position:relative;
+}
+
+.lp-email-form{
+  display:flex;gap:0;max-width:520px;width:100%;margin:0 auto 16px;
+}
+.lp-email-input{
+  flex:1;padding:16px 20px;
+  border:2px solid var(--gray-200);border-right:none;
+  border-radius:var(--radius-sm) 0 0 var(--radius-sm);
+  font-size:15px;font-family:inherit;outline:none;
+  transition:border-color .15s;
+}
+.lp-email-input:focus{border-color:var(--gray-400)}
+.lp-email-input::placeholder{color:var(--gray-400)}
+.lp-email-btn{
+  padding:16px 28px;
+  background:var(--black);color:var(--white);border:none;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-size:15px;font-weight:600;font-family:inherit;
+  cursor:pointer;white-space:nowrap;transition:background .15s;
+}
+.lp-email-btn:hover{background:#333}
+.lp-trial-note{font-size:13px;color:var(--gray-400);margin-bottom:0}
+
+/* ── SOCIAL PROOF ── */
+.lp-social-proof{
+  padding:48px;text-align:center;
+  background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);
+}
+.lp-social-proof p{font-size:14px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.6px;margin-bottom:20px}
+.lp-logos{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;opacity:.4}
+.lp-logos span{font-size:20px;font-weight:700;letter-spacing:-.5px;color:var(--black)}
+
+/* ── FEATURES ── */
+.lp-features{
+  padding:100px 48px;max-width:1100px;margin:0 auto;
+}
+.lp-features h2{
+  font-size:36px;font-weight:700;letter-spacing:-1px;text-align:center;margin-bottom:60px;
+}
+.lp-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.lp-feature-card{text-align:center;padding:32px 20px}
+.lp-feature-icon{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;font-size:24px;
+}
+.lp-feature-card h3{font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.2px}
+.lp-feature-card p{font-size:14px;color:var(--gray-600);line-height:1.6}
+
+/* ── FAQ ── */
+.lp-faq-section{
+  padding:80px 48px;
+  background:var(--gray-50);border-top:1px solid var(--gray-200);
+}
+.lp-faq-inner{max-width:680px;margin:0 auto}
+.lp-faq-section h2{
+  font-size:32px;font-weight:700;letter-spacing:-1px;margin-bottom:40px;text-align:center;
+}
+.faq-item{border-bottom:1px solid var(--gray-200)}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0;cursor:pointer;
+  font-size:16px;font-weight:600;line-height:1.4;
+}
+.faq-q .faq-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--gray-200);display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:var(--gray-600);flex-shrink:0;margin-left:16px;
+  transition:transform .25s,background .15s;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--black);color:var(--white)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+  font-size:15px;color:var(--gray-600);line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:20px}
+
+/* ── BOTTOM CTA ── */
+.lp-bottom-cta{
+  padding:100px 48px;text-align:center;
+  background:var(--black);color:var(--white);
+}
+.lp-bottom-cta h2{font-size:40px;font-weight:700;letter-spacing:-1.5px;margin-bottom:12px}
+.lp-bottom-cta p{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:36px}
+.lp-bottom-cta .lp-email-form{margin:0 auto}
+.lp-bottom-cta .lp-email-input{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15);color:var(--white)}
+.lp-bottom-cta .lp-email-input::placeholder{color:rgba(255,255,255,.35)}
+.lp-bottom-cta .lp-email-btn{background:var(--shopify-green);color:var(--black)}
+.lp-bottom-cta .lp-email-btn:hover{background:var(--shopify-dark-green);color:var(--white)}
+.lp-bottom-cta .lp-trial-note{color:rgba(255,255,255,.35)}
+
+/* ── FOOTER ── */
+.footer{
+  padding:40px 48px;text-align:center;
+  font-size:13px;color:var(--gray-400);
+  border-top:1px solid var(--gray-200);
+}
+
+/* ── DEV TOOLBAR ── */
+.dev-toolbar{
+  position:fixed;bottom:0;left:0;right:0;z-index:300;
+  background:rgba(0,0,0,.92);backdrop-filter:blur(12px);
+  padding:12px 24px;display:flex;align-items:center;gap:16px;
+  color:rgba(255,255,255,.7);font-size:13px;
+}
+.dev-toolbar .dt-label{font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+.dev-toolbar .dt-slug{color:var(--shopify-green);font-weight:600}
+.dev-toolbar .dt-chars{color:rgba(255,255,255,.5)}
+.dev-toolbar .dt-tier{
+  padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.3px;
+}
+.dev-toolbar .dt-tier.creator{background:rgba(168,85,247,.2);color:#c084fc}
+.dev-toolbar .dt-tier.brand{background:rgba(56,189,248,.2);color:#38bdf8}
+.dev-toolbar .dt-tier.none{background:rgba(251,191,36,.2);color:#fbbf24}
+.dt-nav{margin-left:auto;display:flex;gap:8px}
+.dt-nav button{
+  background:rgba(255,255,255,.1);border:none;color:var(--white);
+  padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:background .15s;
+}
+.dt-nav button:hover{background:rgba(255,255,255,.2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav{padding:0 20px}
+  .nav-links{display:none}
+  .dir-hero{padding:60px 20px 48px}
+  .dir-hero h1{font-size:36px}
+  .dir-grid{grid-template-columns:1fr;padding:0 20px 60px}
+  .lp-hero-section{padding:80px 20px 60px}
+  .lp-email-form{flex-direction:column;gap:10px}
+  .lp-email-input{border-right:2px solid var(--gray-200);border-radius:var(--radius-sm)}
+  .lp-email-btn{border-radius:var(--radius-sm)}
+  .lp-feature-grid{grid-template-columns:1fr}
+  .lp-features,.lp-faq-section,.lp-bottom-cta{padding:60px 20px}
+  .dev-toolbar{flex-wrap:wrap;gap:8px;padding:10px 16px}
+  .dt-nav{margin-left:0;width:100%}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.dir-card{animation:fadeUp .5s ease both}
+.dir-card:nth-child(1){animation-delay:.05s}
+.dir-card:nth-child(2){animation-delay:.1s}
+.dir-card:nth-child(3){animation-delay:.15s}
+.dir-card:nth-child(4){animation-delay:.2s}
+.dir-card:nth-child(5){animation-delay:.25s}
+.dir-card:nth-child(6){animation-delay:.3s}
+.dir-card:nth-child(7){animation-delay:.35s}
+.dir-card:nth-child(8){animation-delay:.4s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo" onclick="goHome()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 109.5 40.4"><path d="M93.7 8.5c-.1-.1-.3-.1-.5-.1s-.4 0-1.2.1L91 8.7c-.1-.4-.3-.8-.6-1.1-.8-1-2-1.5-3.4-1.5h-.3c-.5-.6-1--.8-1.6-.8-3.9 0-5.8 4.9-6.4 7.4l-4.5 1.4c-1.3.4-1.4.5-1.6 1.7L70.6 30l17.8 3.1L95 30.5c0 0-1.2-21.6-1.3-22zm-6-1c-.7.2-1.5.5-2.3.7 0-.5.1-1 .1-1.4.4-.6.8-1.1 1.3-1.5.5.4.8 1.2.9 2.2zm-2-2.5c.5 0 .9.2 1.2.5-.9.5-1.6 1.2-2.1 2.2-.1.3-.2.7-.2 1.1l-1.9.6c.5-2.3 1.7-4.4 3-4.4zm-1.5 11.3s-.8-.4-1.8-.4c-1.5 0-1.5.9-1.5 1.1 0 1.3 3.3 1.7 3.3 4.7 0 2.3-1.5 3.8-3.5 3.8-2.4 0-3.6-1.5-3.6-1.5l.7-2.2s1.3 1.1 2.3 1.1c.7 0 1-.5 1-.9 0-1.6-2.7-1.7-2.7-4.4 0-2.3 1.6-4.5 4.9-4.5 1.3 0 1.9.4 1.9.4l-1 2.8z" fill="#95bf47"/><path d="M94 8.4c-.1-.1-.3-.1-.5-.1s-.4 0-1.2.1l-1 .2c-.1-.4-.3-.8-.6-1.1l.1 22.4 6.6-1.4c0 0-1.2-21.6-1.3-22l-2.1.9z" fill="#5e8e3e"/><path d="M87 12.3l-.9 3.5s-1-.5-2.2-.5c-1.8 0-1.9 1.1-1.9 1.4 0 1.5 4 2.1 4 5.7 0 2.8-1.8 4.6-4.2 4.6-2.9 0-4.4-1.8-4.4-1.8l.8-2.7s1.5 1.3 2.8 1.3c.9 0 1.2-.7 1.2-1.1 0-2-3.3-2.1-3.3-5.4 0-2.8 2-5.5 6-5.5 1.6 0 2.1.5 2.1.5z" fill="#fff"/><path d="M25.5 20.3c-1-.5-1.5-.9-1.5-1.5 0-.7.6-1.2 1.7-1.2 1.2 0 2.3.5 2.3.5l.9-2.6s-.8-.6-3.1-.6c-3.2 0-5.4 1.8-5.4 4.4 0 1.5 1 2.6 2.4 3.4 1.1.6 1.5 1.1 1.5 1.7 0 .7-.6 1.3-1.6 1.3-1.6 0-3-.8-3-.8l-.9 2.6s1.3.9 3.6.9c3.3 0 5.6-1.6 5.6-4.5-.1-1.6-1.2-2.7-2.5-3.6zM39.3 14.4c-1.6 0-2.9.8-3.8 1.9l-.1 0 1.3-7.3h-3.6L30 27.2h3.6l1.2-6.5c.5-2.4 1.7-3.8 2.9-3.8.8 0 1.2.6 1.2 1.4 0 .5-.1 1.1-.2 1.6l-1.4 7.3h3.6l1.4-7.6c.2-.8.3-1.8.3-2.4 0-2.1-1.1-3.4-3.3-3.4zM51.9 14.4c-4.3 0-7.2 3.9-7.2 8.3 0 2.8 1.7 5 5 5 4.2 0 7.1-3.8 7.1-8.3 0-2.6-1.5-5-4.9-5zm-1.7 10.5c-1.2 0-1.8-1.1-1.8-2.4 0-2.1 1.1-5.3 3.1-5.3 1.3 0 1.7 1.1 1.7 2.2 0 2.3-1.1 5.5-3 5.5zM64.6 14.4c-2.4 0-3.7 2.1-3.7 2.1h-.1l.2-1.9h-3.2c-.2 1.3-.5 3.3-.8 4.8l-2.5 12.8h3.6l1-5.2h.1s.7.5 2.1.5c4.2 0 7-4.3 7-8.7 0-2.4-1.1-4.4-3.7-4.4zm-2.7 10.6c-.9 0-1.5-.5-1.5-.5l.6-3.5c.4-2.2 1.6-3.7 2.9-3.7 1.1 0 1.5 1.1 1.5 2.1 0 2.5-1.4 5.6-3.5 5.6zM72.1 9.7c-1.2 0-2.1.9-2.1 2.2 0 1.1.7 1.9 1.8 1.9h.1c1.1 0 2.2-.9 2.2-2.2-.1-1.1-.8-1.9-2-1.9zM67.7 27.2h3.6l2.6-12.5h-3.6l-2.6 12.5zM79.1 14.7h-2.5l.1-.6c.2-1.4 1-2.6 2.2-2.6.7 0 1.2.2 1.2.2l.7-2.8s-.5-.3-1.8-.3c-1.2 0-2.3.3-3.2 1.1-1.1.9-1.6 2.3-1.9 3.7l-.1.5h-1.7l-.5 2.7h1.7l-2.1 10.6h3.6l2.1-10.6h2.5l.5-2.7h-.8zM86.3 14.7s-2.2 5.7-3.3 8.8h-.1c-.1-1-.7-4.9-1.5-8.8h-3.8l2.6 10.4c.1.3.1.5 0 .7-.4.9-1 1.7-1.8 2.3-.6.5-1.3.8-1.9 1l1 3c.7-.2 2.2-.9 3.4-2.3 1.6-1.8 3.1-4.7 4.6-8.5l2.5-6.7h-1.7z" fill="#000"/></svg>
+    shopify
+  </div>
+  <div class="nav-links">
+    <a href="#" onclick="goHome();return false">Solutions</a>
+    <a href="#" onclick="goHome();return false">Pricing</a>
+    <a href="#" onclick="goHome();return false">Resources</a>
+    <a href="#" onclick="goHome();return false">What's new</a>
+  </div>
+  <a class="nav-cta" href="#" onclick="return false">Start free trial</a>
+</nav>
+
+<!-- DIRECTORY PAGE -->
+<div id="page-directory" class="directory active">
+  <div class="dir-hero">
+    <div class="dir-badge">Prompt A — Direct / Unified</div>
+    <h1>Free Trial Landing Page Variants</h1>
+    <p>Each card represents a tailored <code style="background:var(--gray-100);padding:2px 6px;border-radius:4px;font-size:14px">/free-trial/{slug}</code> landing page. Click to preview.</p>
+  </div>
+  <div class="dir-grid" id="dir-grid"></div>
+</div>
+
+<!-- LP PAGES (rendered dynamically) -->
+<div id="lp-mount"></div>
+
+<!-- DEV TOOLBAR (visible on LP pages) -->
+<div class="dev-toolbar" id="dev-toolbar" style="display:none">
+  <span class="dt-label">Preview</span>
+  <span class="dt-slug" id="dt-slug"></span>
+  <span class="dt-chars" id="dt-chars"></span>
+  <span class="dt-tier" id="dt-tier"></span>
+  <div class="dt-nav">
+    <button onclick="prevVariant()">← Prev</button>
+    <button onclick="nextVariant()">Next →</button>
+    <button onclick="goHome()">All Variants</button>
+  </div>
+</div>
+
+<div class="footer">Prototype only — not a live Shopify page</div>
+
+<script>
+const VARIANTS = [
+  {
+    slug: "emma-chamberlain",
+    headline: "Turn your passion into a thriving business like Emma Chamberlain",
+    chars: 63,
+    tier: "creator",
+    tierLabel: "headline",
+    pattern: "Action + aspiration + Creator",
+    adRef: '"No experience. No problem." — Emma Chamberlain',
+    faqQ: "How do I start selling with no experience?",
+    faqA: "Shopify walks you through every step, from picking products to your first sale. Thousands of creators like Emma started with zero retail background.",
+    features: [
+      { icon: "🎨", title: "Stunning themes", desc: "Pick from 100+ mobile-ready templates designed for creators and personal brands." },
+      { icon: "📣", title: "Built-in marketing", desc: "Email campaigns, social selling, and SEO — all managed from one dashboard." },
+      { icon: "📦", title: "Easy fulfillment", desc: "Connect to print-on-demand and dropshipping apps with a single click." }
+    ]
+  },
+  {
+    slug: "ai-store-builder",
+    headline: "Build a beautiful store in minutes with Shopify's AI",
+    chars: 52,
+    tier: "none",
+    tierLabel: "none",
+    pattern: "Action + capability",
+    adRef: "AI store builder demo — product/platform ad",
+    faqQ: "What can Shopify's AI builder actually do?",
+    faqA: "It generates your store layout, writes product descriptions, and suggests designs based on your brand. You stay in control of every detail.",
+    features: [
+      { icon: "🤖", title: "AI-powered setup", desc: "Describe your business and watch Shopify generate a complete store in under a minute." },
+      { icon: "✏️", title: "Smart copy", desc: "Product descriptions, meta tags, and email drafts — written by AI, refined by you." },
+      { icon: "🎯", title: "Personalized design", desc: "Get theme and color recommendations based on your industry and audience." }
+    ]
+  },
+  {
+    slug: "best-checkout",
+    headline: "Launch a store built to sell on the world's best checkout",
+    chars: 57,
+    tier: "none",
+    tierLabel: "none",
+    pattern: "Action + outcome",
+    adRef: '"Sell now with Shopify" — checkout evergreen',
+    faqQ: "Why is Shopify's checkout considered the best?",
+    faqA: "Shop Pay converts 36% better than other accelerated checkouts. It's trusted by millions of buyers worldwide.",
+    features: [
+      { icon: "⚡", title: "Shop Pay", desc: "One-tap checkout trusted by over 100 million buyers. Higher conversion, less friction." },
+      { icon: "🔒", title: "PCI compliant", desc: "Enterprise-grade security built in — SSL, fraud analysis, and chargeback protection." },
+      { icon: "🌍", title: "Global payments", desc: "Accept credit cards, digital wallets, and local payment methods in 130+ currencies." }
+    ]
+  },
+  {
+    slug: "nikki-renee-jensen",
+    headline: "Turn your passion into a thriving business like Nikki Renee Jensen",
+    chars: 66,
+    tier: "creator",
+    tierLabel: "subheading",
+    pattern: "Action + aspiration + Creator",
+    adRef: '"Level up your business." — Nikki Renee Jensen',
+    faqQ: "Can I really grow a business from a passion project?",
+    faqA: "Absolutely. Shopify gives you the tools to go from side hustle to full-time brand. Nikki Renee Jensen did exactly that.",
+    features: [
+      { icon: "📈", title: "Growth tools", desc: "Analytics, abandoned cart recovery, and discount codes built right in." },
+      { icon: "🛍️", title: "Multi-channel", desc: "Sell on Instagram, TikTok, Amazon, and your own site — all synced automatically." },
+      { icon: "💳", title: "Flexible plans", desc: "Start small and upgrade as you grow. Plans fit every stage of your journey." }
+    ]
+  },
+  {
+    slug: "sell-everywhere",
+    headline: "Sell across every channel from one powerful dashboard",
+    chars: 51,
+    tier: "none",
+    tierLabel: "none",
+    pattern: "Action + capability",
+    adRef: "Multi-channel selling — platform overview ad",
+    faqQ: "Which sales channels does Shopify support?",
+    faqA: "Sell on your own site, Instagram, TikTok, Amazon, and in person — all managed from a single Shopify admin. No juggling multiple tools.",
+    features: [
+      { icon: "📱", title: "Social commerce", desc: "Tag products in posts, run shoppable ads, and sell directly inside social apps." },
+      { icon: "🏪", title: "POS integration", desc: "Accept in-person payments and sync inventory with your online store in real time." },
+      { icon: "🔄", title: "Marketplace sync", desc: "List products on Amazon, eBay, and Walmart — manage everything from Shopify." }
+    ]
+  },
+  {
+    slug: "dropshipping",
+    headline: "Start selling products today without managing inventory",
+    chars: 54,
+    tier: "none",
+    tierLabel: "none",
+    pattern: "Action + outcome",
+    adRef: "Dropshipping / low-barrier entry — aspiration ad",
+    faqQ: "Do I need to buy inventory upfront?",
+    faqA: "No. With Shopify's dropshipping integrations, suppliers ship directly to your customers. You focus on marketing and growing your brand.",
+    features: [
+      { icon: "🚚", title: "Auto fulfillment", desc: "Orders route directly to suppliers. You never touch inventory or pack a box." },
+      { icon: "🔍", title: "Product sourcing", desc: "Browse millions of products from vetted suppliers and add them to your store instantly." },
+      { icon: "💰", title: "Low startup cost", desc: "No warehouse, no bulk orders. Pay for products only after you make a sale." }
+    ]
+  },
+  {
+    slug: "mr-beast-shop",
+    headline: "Scale your brand to millions of customers like MrBeast",
+    chars: 54,
+    tier: "brand",
+    tierLabel: "brand",
+    pattern: "Action + aspiration + Brand",
+    adRef: "MrBeast / Feastables — brand showcase ad",
+    faqQ: "Can Shopify handle high-volume sales?",
+    faqA: "Shopify powers brands doing billions in sales, including flash drops and viral moments. Your store scales automatically with demand.",
+    features: [
+      { icon: "🚀", title: "Unlimited scale", desc: "Handle flash sales and viral traffic without worrying about your store going down." },
+      { icon: "🌐", title: "Global CDN", desc: "Lightning-fast page loads for customers anywhere in the world, every time." },
+      { icon: "📊", title: "Advanced analytics", desc: "Track performance, customer behavior, and revenue with real-time reporting." }
+    ]
+  },
+  {
+    slug: "pos-retail",
+    headline: "Sell in person and online from one unified platform",
+    chars: 51,
+    tier: "none",
+    tierLabel: "none",
+    pattern: "Action + capability",
+    adRef: "Shopify POS / retail + online — product demo ad",
+    faqQ: "Can I manage online and retail in one place?",
+    faqA: "Yes. Shopify POS syncs your inventory, orders, and customer data across every location. One dashboard for everything.",
+    features: [
+      { icon: "💳", title: "Tap to pay", desc: "Accept payments anywhere with Shopify's card reader or tap-to-pay on your phone." },
+      { icon: "📋", title: "Unified inventory", desc: "Real-time stock sync across all your locations and your online store." },
+      { icon: "👥", title: "Customer profiles", desc: "Track purchase history and preferences whether customers shop online or in store." }
+    ]
+  }
+];
+
+let currentIdx = -1;
+
+function goHome() {
+  currentIdx = -1;
+  document.getElementById('page-directory').classList.add('active');
+  document.querySelectorAll('.lp-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('dev-toolbar').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.pushState(null, '', '#');
+}
+
+function showVariant(idx) {
+  currentIdx = idx;
+  const v = VARIANTS[idx];
+
+  document.getElementById('page-directory').classList.remove('active');
+  document.querySelectorAll('.lp-page').forEach(p => p.classList.remove('active'));
+
+  let page = document.getElementById('lp-' + v.slug);
+  if (!page) {
+    page = document.createElement('div');
+    page.id = 'lp-' + v.slug;
+    page.className = 'lp-page';
+    page.innerHTML = renderLP(v);
+    document.getElementById('lp-mount').appendChild(page);
+  }
+  page.classList.add('active');
+
+  const tb = document.getElementById('dev-toolbar');
+  tb.style.display = 'flex';
+  document.getElementById('dt-slug').textContent = '/free-trial/' + v.slug;
+  document.getElementById('dt-chars').textContent = v.chars + ' chars';
+  const tierEl = document.getElementById('dt-tier');
+  tierEl.textContent = v.tierLabel;
+  tierEl.className = 'dt-tier ' + v.tier;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.pushState(null, '', '#/free-trial/' + v.slug);
+}
+
+function prevVariant() { showVariant((currentIdx - 1 + VARIANTS.length) % VARIANTS.length); }
+function nextVariant() { showVariant((currentIdx + 1) % VARIANTS.length); }
+
+function renderLP(v) {
+  return `
+    <section class="lp-hero-section">
+      <h1 class="lp-headline">${v.headline}</h1>
+      <div class="lp-email-form">
+        <input class="lp-email-input" type="email" placeholder="Enter your email address">
+        <button class="lp-email-btn">Start free trial</button>
+      </div>
+      <p class="lp-trial-note">Try Shopify free — no credit card required</p>
+    </section>
+
+    <div class="lp-social-proof">
+      <p>Trusted by millions of businesses worldwide</p>
+      <div class="lp-logos">
+        <span>Allbirds</span><span>Gymshark</span><span>Heinz</span><span>FIGS</span><span>Bombas</span>
+      </div>
+    </div>
+
+    <section class="lp-features">
+      <h2>Everything to start, sell, and grow</h2>
+      <div class="lp-feature-grid">
+        ${v.features.map(f => `
+          <div class="lp-feature-card">
+            <div class="lp-feature-icon">${f.icon}</div>
+            <h3>${f.title}</h3>
+            <p>${f.desc}</p>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="lp-faq-section">
+      <h2>Frequently asked questions</h2>
+      <div class="lp-faq-inner">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            ${v.faqQ}
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">${v.faqA}</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            What happens after my trial ends?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">You'll pick a plan that fits your business. Plans start at $5/month, and you can change or cancel anytime.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            Do I need technical skills to use Shopify?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Not at all. Shopify is designed so anyone can build a professional store — drag, drop, and publish. No coding required.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            Can I use my own domain name?
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-a">Yes. Connect a domain you already own or buy a new one directly through Shopify. Setup takes just a few clicks.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-bottom-cta">
+      <h2>Start building today</h2>
+      <p>Join millions of entrepreneurs on Shopify</p>
+      <div class="lp-email-form">
+        <input class="lp-email-input" type="email" placeholder="Enter your email address">
+        <button class="lp-email-btn">Start free trial</button>
+      </div>
+      <p class="lp-trial-note" style="margin-top:14px">No credit card required</p>
+    </section>
+  `;
+}
+
+function renderDirectory() {
+  const grid = document.getElementById('dir-grid');
+  grid.innerHTML = VARIANTS.map((v, i) => `
+    <a class="dir-card" onclick="showVariant(${i})">
+      <span class="dir-card-chars">${v.chars} chars</span>
+      <div class="dir-card-top">
+        <span class="tag tag-${v.tier}">${v.tierLabel}</span>
+        <span class="tag tag-pattern">${v.pattern}</span>
+      </div>
+      <div class="dir-card-body">
+        <div class="dir-card-headline">${v.headline}</div>
+        <div class="dir-card-slug">/free-trial/${v.slug}</div>
+        <div class="dir-card-meta"><strong>Ad:</strong> ${v.adRef}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+window.addEventListener('hashchange', () => {
+  const hash = location.hash.replace('#', '');
+  if (hash.startsWith('/free-trial/')) {
+    const slug = hash.replace('/free-trial/', '');
+    const idx = VARIANTS.findIndex(v => v.slug === slug);
+    if (idx >= 0) showVariant(idx);
+  } else {
+    goHome();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (currentIdx < 0) return;
+  if (e.key === 'ArrowLeft') prevVariant();
+  if (e.key === 'ArrowRight') nextVariant();
+  if (e.key === 'Escape') goHome();
+});
+
+renderDirectory();
+
+const initHash = location.hash.replace('#', '');
+if (initHash.startsWith('/free-trial/')) {
+  const slug = initHash.replace('/free-trial/', '');
+  const idx = VARIANTS.findIndex(v => v.slug === slug);
+  if (idx >= 0) showVariant(idx);
+}
+</script>
+</body>
+</html>
