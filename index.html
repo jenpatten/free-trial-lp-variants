@@ -8,75 +8,37 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#000;
-  --white:#fff;
-  --shopify-green:#95BF47;
-  --shopify-dark-green:#5E8E3E;
-  --gray-50:#fafaf8;
-  --gray-100:#f3f3ef;
-  --gray-200:#e3e3dd;
-  --gray-300:#d1d1c7;
-  --gray-400:#8a8a80;
-  --gray-600:#5c5c52;
-  --gray-800:#2a2a24;
+  --black:#000;--white:#fff;
+  --shopify-green:#95BF47;--shopify-dark-green:#5E8E3E;
+  --gray-50:#fafaf8;--gray-100:#f3f3ef;--gray-200:#e3e3dd;--gray-300:#d1d1c7;
+  --gray-400:#8a8a80;--gray-600:#5c5c52;--gray-800:#2a2a24;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:var(--white);color:var(--gray-800)}
 
-/* ── DIRECTORY PAGE ── */
-.directory{display:none;min-height:100vh}
-.directory.active{display:block}
-
+/* ── DIRECTORY ── */
+.directory{display:none;min-height:100vh}.directory.active{display:block}
 .dir-topbar{
-  position:sticky;top:0;z-index:100;
-  height:56px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 32px;
-  background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
+  position:sticky;top:0;z-index:100;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);
   border-bottom:1px solid var(--gray-200);
 }
 .dir-topbar-logo{display:flex;align-items:center;gap:8px;cursor:pointer}
 .dir-topbar-logo svg{height:28px}
 .dir-topbar-logo span{font-weight:700;font-size:15px;letter-spacing:-.3px}
-.dir-tabs{display:flex;gap:2px;background:var(--gray-100);border-radius:8px;padding:3px}
-.dir-tab{
-  padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;
-  cursor:pointer;border:none;background:none;color:var(--gray-400);transition:all .15s;
-}
-.dir-tab.active{background:var(--white);color:var(--gray-800);box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .dir-topbar-meta{font-size:12px;color:var(--gray-400);display:flex;align-items:center;gap:10px}
-.dir-topbar-meta .pill{
-  background:#eef5e6;color:var(--shopify-dark-green);
-  padding:4px 10px;border-radius:12px;font-weight:700;font-size:10px;letter-spacing:.5px;text-transform:uppercase;
-}
-
-.dir-hero{
-  padding:80px 32px 56px;text-align:center;
-  background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%);
-}
+.dir-topbar-meta .pill{background:#eef5e6;color:var(--shopify-dark-green);padding:4px 10px;border-radius:12px;font-weight:700;font-size:10px;letter-spacing:.5px;text-transform:uppercase}
+.dir-hero{padding:80px 32px 56px;text-align:center;background:linear-gradient(180deg,var(--gray-50),var(--white))}
 .dir-hero h1{font-size:48px;font-weight:800;line-height:1.08;letter-spacing:-2px;max-width:640px;margin:0 auto 14px}
 .dir-hero p{font-size:16px;color:var(--gray-600);max-width:480px;margin:0 auto}
-.dir-badge{
-  display:inline-block;margin-bottom:20px;
-  font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
-  color:var(--shopify-dark-green);background:#eef5e6;padding:5px 12px;border-radius:16px;
-}
-
-.dir-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-  gap:16px;padding:0 32px 80px;max-width:1200px;margin:0 auto;
-}
-.dir-card{
-  background:var(--white);border:1px solid var(--gray-200);border-radius:14px;
-  overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;
-  text-decoration:none;color:inherit;display:block;position:relative;
-}
+.dir-badge{display:inline-block;margin-bottom:20px;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--shopify-dark-green);background:#eef5e6;padding:5px 12px;border-radius:16px}
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;padding:0 32px 80px;max-width:1200px;margin:0 auto}
+.dir-card{background:var(--white);border:1px solid var(--gray-200);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:block;position:relative}
 .dir-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
 .dir-card-top{padding:24px 24px 0;display:flex;gap:6px;flex-wrap:wrap}
 .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 8px;border-radius:12px}
-.tag-creator{background:#f0e6ff;color:#6b21a8}
-.tag-brand{background:#e0f2fe;color:#0369a1}
-.tag-none{background:#fef3c7;color:#92400e}
-.tag-pattern{background:#eef5e6;color:#3d6b22}
+.tag-creator{background:#f0e6ff;color:#6b21a8}.tag-brand{background:#e0f2fe;color:#0369a1}.tag-none{background:#fef3c7;color:#92400e}.tag-pattern{background:#eef5e6;color:#3d6b22}
 .dir-card-body{padding:16px 24px 24px}
 .dir-card-headline{font-size:18px;font-weight:700;line-height:1.3;margin-bottom:8px;letter-spacing:-.3px}
 .dir-card-slug{font-size:12px;color:var(--shopify-dark-green);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:5px}
@@ -85,81 +47,79 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .dir-card-chars{position:absolute;top:14px;right:14px;font-size:10px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:2px 7px;border-radius:5px}
 
 /* ── LP PAGE ── */
-.lp-page{display:none;min-height:100vh}
-.lp-page.active{display:block}
+.lp-page{display:none;min-height:100vh}.lp-page.active{display:block}
 
-/* Hero with collage background */
+/* Hero */
 .lp-hero{
-  position:relative;
-  min-height:100vh;
+  position:relative;min-height:100vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  overflow:hidden;
-  background:#1a1a1a;
+  overflow:hidden;background:#1a1a1a;
 }
-
-/* Mosaic background */
-.lp-mosaic{
+.lp-hero-bg{
   position:absolute;inset:0;z-index:1;
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  grid-template-rows:repeat(4,1fr);
-  gap:8px;padding:8px;
-  transform:rotate(-4deg) scale(1.15);
-  transform-origin:center center;
-  opacity:.65;
-}
-.lp-mosaic-tile{
-  border-radius:12px;
+  background-image:url('https://cdn.shopify.com/b/shopify-brochure2-assets/f81302420e068442662747e73daeb4a0.webp?width=2000');
   background-size:cover;background-position:center;
-  min-height:0;
 }
 
-/* Centered Shopify logo */
+/* Shopify logo */
 .lp-logo{
-  position:absolute;top:28px;left:50%;transform:translateX(-50%);
+  position:absolute;top:24px;left:50%;transform:translateX(-50%);
   z-index:10;display:flex;align-items:center;gap:8px;
 }
-.lp-logo svg{height:30px}
-.lp-logo span{font-size:20px;font-weight:700;color:var(--white);letter-spacing:-.3px}
+.lp-logo img{height:36px}
 
-/* White hero card */
-.lp-card{
+/* Two-card stack */
+.lp-cards{
   position:relative;z-index:5;
-  background:var(--white);
-  border-radius:24px;
-  padding:48px 48px 44px;
+  display:flex;flex-direction:column;
   max-width:520px;width:90%;
-  text-align:left;
-  box-shadow:0 24px 80px rgba(0,0,0,.25);
 }
-.lp-card-headline{
-  font-size:38px;font-weight:800;
-  line-height:1.1;letter-spacing:-1.5px;
-  margin-bottom:12px;color:var(--black);
-}
-.lp-card-sub{
-  font-size:15px;color:var(--gray-600);line-height:1.5;margin-bottom:28px;
-}
-.lp-card-sub strong{color:var(--black)}
 
-.lp-card-label{font-size:16px;font-weight:700;color:var(--black);margin-bottom:4px}
-.lp-card-consent{font-size:11px;color:var(--gray-400);margin-bottom:12px}
+/* White headline card */
+.lp-white-card{
+  background:var(--white);
+  border-radius:20px 20px 0 0;
+  padding:40px 40px 32px;
+}
+.lp-white-card h1{
+  font-size:36px;font-weight:800;
+  line-height:1.1;letter-spacing:-1.2px;
+  margin-bottom:14px;color:var(--black);
+}
+.lp-white-card p{
+  font-size:14px;color:var(--gray-600);line-height:1.55;
+}
 
+/* Dark CTA card */
+.lp-dark-card{
+  background:var(--black);
+  border-radius:0 0 20px 20px;
+  padding:28px 40px 36px;
+  color:var(--white);
+}
+.lp-dark-card-title{
+  font-size:18px;font-weight:700;margin-bottom:4px;
+}
+.lp-dark-card-sub{
+  font-size:14px;color:rgba(255,255,255,.55);margin-bottom:10px;
+}
+.lp-dark-card-consent{
+  font-size:11px;color:rgba(255,255,255,.4);margin-bottom:14px;font-style:italic;
+}
 .lp-pill-form{
   display:flex;align-items:center;
-  background:var(--black);
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
   border-radius:60px;
-  padding:6px 6px 6px 20px;
-  gap:8px;
+  padding:5px 5px 5px 20px;gap:8px;
 }
 .lp-pill-input{
   flex:1;background:none;border:none;outline:none;
-  color:var(--white);font-size:15px;font-family:inherit;
-  padding:10px 0;
+  color:var(--white);font-size:15px;font-family:inherit;padding:10px 0;
 }
 .lp-pill-input::placeholder{color:rgba(255,255,255,.4)}
 .lp-pill-submit{
-  width:44px;height:44px;border-radius:50%;
+  width:42px;height:42px;border-radius:50%;
   background:rgba(255,255,255,.15);border:none;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   transition:background .15s;flex-shrink:0;
@@ -167,76 +127,53 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .lp-pill-submit:hover{background:rgba(255,255,255,.25)}
 .lp-pill-submit svg{width:18px;height:18px}
 
-/* Social proof bar */
-.lp-social{
-  padding:40px 48px;text-align:center;
-  background:var(--white);
+/* Brand logos bar */
+.lp-brands{
+  padding:32px 48px;
+  display:flex;align-items:center;justify-content:center;gap:32px;
+  flex-wrap:wrap;background:var(--white);
   border-bottom:1px solid var(--gray-200);
 }
-.lp-social-logos{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;opacity:.35}
-.lp-social-logos span{font-size:18px;font-weight:700;letter-spacing:-.3px;color:var(--black)}
+.lp-brands img{height:24px;opacity:.4;transition:opacity .2s}
+.lp-brands img:hover{opacity:.7}
 
-/* Feature sections — card style like current Shopify */
+/* Features */
 .lp-sections{max-width:1100px;margin:0 auto;padding:80px 48px}
 .lp-sections-header{text-align:center;margin-bottom:56px}
 .lp-sections-header h2{font-size:32px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
 .lp-sections-header p{font-size:16px;color:var(--gray-600)}
-
 .lp-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.lp-feature-card{
-  background:var(--gray-50);border-radius:16px;padding:36px 28px;
-  border:1px solid var(--gray-200);transition:border-color .2s;
-}
+.lp-feature-card{background:var(--gray-50);border-radius:16px;padding:36px 28px;border:1px solid var(--gray-200);transition:border-color .2s}
 .lp-feature-card:hover{border-color:var(--gray-300)}
-.lp-feature-icon{
-  width:48px;height:48px;border-radius:12px;
-  background:var(--white);border:1px solid var(--gray-200);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:20px;font-size:22px;
-}
+.lp-feature-icon{width:48px;height:48px;border-radius:12px;background:var(--white);border:1px solid var(--gray-200);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
 .lp-feature-card h3{font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.2px}
 .lp-feature-card p{font-size:14px;color:var(--gray-600);line-height:1.6}
 
 /* Testimonial */
-.lp-testimonial{
-  padding:64px 48px;
-  background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);
-}
+.lp-testimonial{padding:64px 48px;background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}
 .lp-testimonial-inner{max-width:700px;margin:0 auto;text-align:center}
-.lp-testimonial blockquote{
-  font-size:22px;font-weight:500;line-height:1.5;letter-spacing:-.3px;
-  margin-bottom:20px;font-style:italic;color:var(--gray-800);
-}
+.lp-testimonial blockquote{font-size:22px;font-weight:500;line-height:1.5;letter-spacing:-.3px;margin-bottom:20px;font-style:italic;color:var(--gray-800)}
 .lp-testimonial cite{font-size:14px;color:var(--gray-400);font-style:normal;font-weight:600}
 
 /* FAQ */
 .lp-faq{padding:80px 48px;max-width:760px;margin:0 auto}
-.lp-faq h2{font-size:28px;font-weight:800;letter-spacing:-.8px;margin-bottom:8px}
-.lp-faq-sub{font-size:15px;color:var(--gray-400);margin-bottom:36px}
+.lp-faq h2{font-size:28px;font-weight:800;letter-spacing:-.8px;margin-bottom:36px}
 .faq-item{border-bottom:1px solid var(--gray-200)}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 0;cursor:pointer;font-size:16px;font-weight:600;line-height:1.4;
-}
-.faq-q .faq-chevron{
-  width:24px;height:24px;flex-shrink:0;margin-left:16px;
-  transition:transform .25s;color:var(--gray-400);
-}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;font-size:16px;font-weight:600;line-height:1.4}
+.faq-q .faq-chevron{width:24px;height:24px;flex-shrink:0;margin-left:16px;transition:transform .25s;color:var(--gray-400)}
 .faq-item.open .faq-chevron{transform:rotate(180deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;font-size:15px;color:var(--gray-600);line-height:1.7}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:20px}
 
-/* Bottom CTA — matches Shopify dark section */
-.lp-bottom{
-  padding:80px 48px;text-align:center;
-  background:var(--gray-50);
-  border-top:1px solid var(--gray-200);
-}
+/* Bottom CTA */
+.lp-bottom{padding:80px 48px;text-align:center;background:var(--gray-50);border-top:1px solid var(--gray-200)}
 .lp-bottom-inner{max-width:480px;margin:0 auto}
 .lp-bottom h2{font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
 .lp-bottom p{font-size:15px;color:var(--gray-600);margin-bottom:24px}
-.lp-bottom .lp-pill-form{max-width:420px;margin:0 auto}
-.lp-bottom .lp-card-consent{text-align:center;margin-top:12px}
+.lp-bottom .lp-pill-form{max-width:420px;margin:0 auto;background:var(--black);border-color:transparent}
+.lp-bottom .lp-pill-input{color:var(--white)}
+.lp-bottom .lp-pill-input::placeholder{color:rgba(255,255,255,.4)}
+.lp-bottom-consent{font-size:11px;color:var(--gray-400);margin-top:12px;text-align:center;font-style:italic}
 
 /* Footer */
 .footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--gray-400);border-top:1px solid var(--gray-200)}
@@ -256,43 +193,32 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 .dt-tier.brand{background:rgba(56,189,248,.2);color:#38bdf8}
 .dt-tier.none{background:rgba(251,191,36,.2);color:#fbbf24}
 .dt-nav{margin-left:auto;display:flex;gap:6px}
-.dt-nav button{
-  background:rgba(255,255,255,.1);border:none;color:var(--white);
-  padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;
-  cursor:pointer;font-family:inherit;transition:background .15s;
-}
+.dt-nav button{background:rgba(255,255,255,.1);border:none;color:var(--white);padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s}
 .dt-nav button:hover{background:rgba(255,255,255,.2)}
 
 /* Responsive */
 @media(max-width:768px){
-  .dir-topbar{padding:0 16px}
-  .dir-topbar-meta{display:none}
-  .dir-hero{padding:48px 16px 40px}
-  .dir-hero h1{font-size:32px}
+  .dir-topbar{padding:0 16px}.dir-topbar-meta{display:none}
+  .dir-hero{padding:48px 16px 40px}.dir-hero h1{font-size:32px}
   .dir-grid{grid-template-columns:1fr;padding:0 16px 60px}
-  .lp-card{padding:32px 28px 28px}
-  .lp-card-headline{font-size:28px}
+  .lp-white-card{padding:28px 24px 20px}.lp-white-card h1{font-size:26px}
+  .lp-dark-card{padding:20px 24px 28px}
   .lp-feature-grid{grid-template-columns:1fr}
   .lp-sections,.lp-faq,.lp-bottom,.lp-testimonial{padding:48px 20px}
-  .lp-social{padding:28px 20px}
+  .lp-brands{padding:20px 16px;gap:20px}
   .dev-toolbar{flex-wrap:wrap;gap:6px;padding:8px 12px}
   .dt-nav{margin-left:0;width:100%}
-  .lp-mosaic{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr)}
 }
 
 /* Animations */
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes cardIn{from{opacity:0;transform:scale(.96) translateY(24px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .dir-card{animation:fadeUp .5s ease both}
-.dir-card:nth-child(1){animation-delay:.05s}
-.dir-card:nth-child(2){animation-delay:.1s}
-.dir-card:nth-child(3){animation-delay:.15s}
-.dir-card:nth-child(4){animation-delay:.2s}
-.dir-card:nth-child(5){animation-delay:.25s}
-.dir-card:nth-child(6){animation-delay:.3s}
-.dir-card:nth-child(7){animation-delay:.35s}
-.dir-card:nth-child(8){animation-delay:.4s}
-.lp-card{animation:cardIn .6s cubic-bezier(.16,1,.3,1) both}
+.dir-card:nth-child(1){animation-delay:.05s}.dir-card:nth-child(2){animation-delay:.1s}
+.dir-card:nth-child(3){animation-delay:.15s}.dir-card:nth-child(4){animation-delay:.2s}
+.dir-card:nth-child(5){animation-delay:.25s}.dir-card:nth-child(6){animation-delay:.3s}
+.dir-card:nth-child(7){animation-delay:.35s}.dir-card:nth-child(8){animation-delay:.4s}
+.lp-cards{animation:cardIn .6s cubic-bezier(.16,1,.3,1) both}
 </style>
 </head>
 <body>
@@ -301,7 +227,7 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 <div id="page-directory" class="directory active">
   <div class="dir-topbar">
     <div class="dir-topbar-logo" onclick="goHome()">
-      <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#95BF47"/><path d="M23.2 10.5c-.08-.08-.24-.12-.4-.12-.16 0-.48.04-.48.04l-1.36.08c-.08-.32-.24-.6-.44-.84-.64-.76-1.52-1.12-2.56-1.12h-.2c-.36-.44-.8-.64-1.2-.64-2.92 0-4.36 3.68-4.8 5.56l-3.4 1.04c-.6.2-.64.2-.72 .76L6 26.4l13.4 2.32 7.24-1.56s-.88-16.2-.96-16.48l-.48-.18zm-4.52-.72c-.52.16-1.12.36-1.72.52 0-.4.04-.76.04-1.08.32-.44.64-.8.96-1.08.4.28.64.88.72 1.64zm-1.48-2c.36 0 .64.12.88.36-.68.36-1.32.92-1.6 1.68-.08.2-.12.52-.16.84l-1.44.44c.36-1.72 1.16-3.32 2.32-3.32zm.44 8.52s-.6-.32-1.36-.32c-1.08 0-1.12.68-1.12.84 0 .92 2.4 1.28 2.4 3.44 0 1.72-1.08 2.8-2.52 2.8-1.76 0-2.64-1.08-2.64-1.08l.48-1.6s.92.8 1.72.8c.52 0 .72-.4.72-.68 0-1.2-1.96-1.24-1.96-3.24 0-1.68 1.2-3.28 3.6-3.28.92 0 1.4.28 1.4.28l-.72 2.04z" fill="#fff"/></svg>
+      <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#95BF47"/><path d="M23.2 10.5c-.08-.08-.24-.12-.4-.12-.16 0-.48.04-.48.04l-1.36.08c-.08-.32-.24-.6-.44-.84-.64-.76-1.52-1.12-2.56-1.12h-.2c-.36-.44-.8-.64-1.2-.64-2.92 0-4.36 3.68-4.8 5.56l-3.4 1.04c-.6.2-.64.2-.72.76L6 26.4l13.4 2.32 7.24-1.56s-.88-16.2-.96-16.48l-.48-.18zm-4.52-.72c-.52.16-1.12.36-1.72.52 0-.4.04-.76.04-1.08.32-.44.64-.8.96-1.08.4.28.64.88.72 1.64zm-1.48-2c.36 0 .64.12.88.36-.68.36-1.32.92-1.6 1.68-.08.2-.12.52-.16.84l-1.44.44c.36-1.72 1.16-3.32 2.32-3.32zm.44 8.52s-.6-.32-1.36-.32c-1.08 0-1.12.68-1.12.84 0 .92 2.4 1.28 2.4 3.44 0 1.72-1.08 2.8-2.52 2.8-1.76 0-2.64-1.08-2.64-1.08l.48-1.6s.92.8 1.72.8c.52 0 .72-.4.72-.68 0-1.2-1.96-1.24-1.96-3.24 0-1.68 1.2-3.28 3.6-3.28.92 0 1.4.28 1.4.28l-.72 2.04z" fill="#fff"/></svg>
       <span>LP Variants</span>
     </div>
     <div class="dir-topbar-meta">
@@ -317,10 +243,8 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
   <div class="dir-grid" id="dir-grid"></div>
 </div>
 
-<!-- ── LP MOUNT ── -->
 <div id="lp-mount"></div>
 
-<!-- ── DEV TOOLBAR ── -->
 <div class="dev-toolbar" id="dev-toolbar" style="display:none">
   <span class="dt-label">Preview</span>
   <span class="dt-slug" id="dt-slug"></span>
@@ -336,160 +260,149 @@ body{font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased
 <div class="footer">Prototype only — not a live Shopify page</div>
 
 <script>
-const TILE_IMAGES = [
-  'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1434389677669-e08b4cda3a98?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1608042314453-ae338d80c427?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=300&fit=crop',
-  'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&h=300&fit=crop',
+const CDN = 'https://cdn.shopify.com/b/shopify-brochure2-assets/';
+const HERO_BG = CDN + 'f81302420e068442662747e73daeb4a0.webp?width=2000';
+const SHOPIFY_LOGO = CDN + '4eee410ef38acc59d2649e96a03d93b9.svg';
+const BRAND_LOGOS = [
+  CDN + '88751b80afdd7bde9b8a759f8620deb1.svg?width=150&height=48',
+  CDN + '453c184958be3c1340a0ad35c6115cb4.svg?width=166&height=28',
+  CDN + 'c2cf7bf201c7d00c5798e522b14ea523.svg?width=164&height=28',
+  CDN + 'bde4787cbcb6f456386241ac567747ce.svg?width=126&height=34',
+  CDN + '7851ef5b648c4b78cf9e82a1d1b9a30d.svg?width=106&height=61',
+  CDN + 'f504822b0d43b65c596d4f4afac7531f.svg?width=180&height=26',
+  CDN + 'ac58580841d103e0440e6a3f9d62b937.svg?width=181&height=30',
 ];
+
+const ARROW_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+const CHEVRON_SVG = `<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
 
 const VARIANTS = [
   {
     slug: "emma-chamberlain",
     headline: "Turn your passion into a thriving business like Emma Chamberlain",
+    desc: "Creator Emma Chamberlain built her business on Shopify \u2014 join millions of entrepreneurs doing the same.",
     chars: 63,
-    tier: "creator",
-    tierLabel: "headline",
+    tier: "creator", tierLabel: "headline",
     pattern: "Action + aspiration + Creator",
-    adRef: '"No experience. No problem." — Emma Chamberlain',
+    adRef: '\u201CNo experience. No problem.\u201D \u2014 Emma Chamberlain',
     faqQ: "How do I start selling with no experience?",
     faqA: "Shopify walks you through every step, from picking products to your first sale. Thousands of creators like Emma started with zero retail background.",
     features: [
-      { icon: "🎨", title: "Stunning themes", desc: "Pick from 100+ mobile-ready templates designed for creators and personal brands." },
-      { icon: "📣", title: "Built-in marketing", desc: "Email campaigns, social selling, and SEO — all managed from one dashboard." },
-      { icon: "📦", title: "Easy fulfillment", desc: "Connect to print-on-demand and dropshipping apps with a single click." }
+      { icon: "\uD83C\uDFA8", title: "Stunning themes", desc: "Pick from 100+ mobile-ready templates designed for creators and personal brands." },
+      { icon: "\uD83D\uDCE3", title: "Built-in marketing", desc: "Email campaigns, social selling, and SEO \u2014 all managed from one dashboard." },
+      { icon: "\uD83D\uDCE6", title: "Easy fulfillment", desc: "Connect to print-on-demand and dropshipping apps with a single click." }
     ]
   },
   {
     slug: "ai-store-builder",
     headline: "Build a beautiful store in minutes with Shopify\u2019s AI",
+    desc: "Shopify\u2019s AI builds your storefront, writes your copy, and gets you selling faster than ever.",
     chars: 52,
-    tier: "none",
-    tierLabel: "none",
+    tier: "none", tierLabel: "none",
     pattern: "Action + capability",
-    adRef: "AI store builder demo — product/platform ad",
+    adRef: "AI store builder demo \u2014 product/platform ad",
     faqQ: "What can Shopify\u2019s AI builder actually do?",
     faqA: "It generates your store layout, writes product descriptions, and suggests designs based on your brand. You stay in control of every detail.",
     features: [
-      { icon: "🤖", title: "AI-powered setup", desc: "Describe your business and watch Shopify generate a complete store in under a minute." },
-      { icon: "✏️", title: "Smart copy", desc: "Product descriptions, meta tags, and email drafts — written by AI, refined by you." },
-      { icon: "🎯", title: "Personalized design", desc: "Get theme and color recommendations based on your industry and audience." }
+      { icon: "\uD83E\uDD16", title: "AI-powered setup", desc: "Describe your business and watch Shopify generate a complete store in under a minute." },
+      { icon: "\u270F\uFE0F", title: "Smart copy", desc: "Product descriptions, meta tags, and email drafts \u2014 written by AI, refined by you." },
+      { icon: "\uD83C\uDFAF", title: "Personalized design", desc: "Get theme and color recommendations based on your industry and audience." }
     ]
   },
   {
     slug: "best-checkout",
     headline: "Launch a store built to sell on the world\u2019s best checkout",
+    desc: "Shopify\u2019s checkout converts 36% better than the competition \u2014 start selling on it today.",
     chars: 57,
-    tier: "none",
-    tierLabel: "none",
+    tier: "none", tierLabel: "none",
     pattern: "Action + outcome",
-    adRef: '"Sell now with Shopify" — checkout evergreen',
+    adRef: '\u201CSell now with Shopify\u201D \u2014 checkout evergreen',
     faqQ: "Why is Shopify\u2019s checkout considered the best?",
     faqA: "Shop Pay converts 36% better than other accelerated checkouts. It\u2019s trusted by millions of buyers worldwide.",
     features: [
-      { icon: "⚡", title: "Shop Pay", desc: "One-tap checkout trusted by over 100 million buyers. Higher conversion, less friction." },
-      { icon: "🔒", title: "PCI compliant", desc: "Enterprise-grade security built in — SSL, fraud analysis, and chargeback protection." },
-      { icon: "🌍", title: "Global payments", desc: "Accept credit cards, digital wallets, and local payment methods in 130+ currencies." }
+      { icon: "\u26A1", title: "Shop Pay", desc: "One-tap checkout trusted by over 100 million buyers. Higher conversion, less friction." },
+      { icon: "\uD83D\uDD12", title: "PCI compliant", desc: "Enterprise-grade security built in \u2014 SSL, fraud analysis, and chargeback protection." },
+      { icon: "\uD83C\uDF0D", title: "Global payments", desc: "Accept credit cards, digital wallets, and local payment methods in 130+ currencies." }
     ]
   },
   {
     slug: "nikki-renee-jensen",
     headline: "Turn your passion into a thriving business like Nikki Renee Jensen",
+    desc: "Creator NikiReneeJensen built her business on Shopify \u2014 join millions of entrepreneurs doing the same.",
     chars: 66,
-    tier: "creator",
-    tierLabel: "subheading",
+    tier: "creator", tierLabel: "subheading",
     pattern: "Action + aspiration + Creator",
-    adRef: '"Level up your business." — Nikki Renee Jensen',
+    adRef: '\u201CLevel up your business.\u201D \u2014 Nikki Renee Jensen',
     faqQ: "Can I really grow a business from a passion project?",
     faqA: "Absolutely. Shopify gives you the tools to go from side hustle to full-time brand. Nikki Renee Jensen did exactly that.",
     features: [
-      { icon: "📈", title: "Growth tools", desc: "Analytics, abandoned cart recovery, and discount codes built right in." },
-      { icon: "🛍️", title: "Multi-channel", desc: "Sell on Instagram, TikTok, Amazon, and your own site — all synced automatically." },
-      { icon: "💳", title: "Flexible plans", desc: "Start small and upgrade as you grow. Plans fit every stage of your journey." }
+      { icon: "\uD83D\uDCC8", title: "Growth tools", desc: "Analytics, abandoned cart recovery, and discount codes built right in." },
+      { icon: "\uD83D\uDECD\uFE0F", title: "Multi-channel", desc: "Sell on Instagram, TikTok, Amazon, and your own site \u2014 all synced automatically." },
+      { icon: "\uD83D\uDCB3", title: "Flexible plans", desc: "Start small and upgrade as you grow. Plans fit every stage of your journey." }
     ]
   },
   {
     slug: "sell-everywhere",
     headline: "Sell across every channel from one powerful dashboard",
+    desc: "Manage your online store, social commerce, and in-person sales all from Shopify.",
     chars: 51,
-    tier: "none",
-    tierLabel: "none",
+    tier: "none", tierLabel: "none",
     pattern: "Action + capability",
-    adRef: "Multi-channel selling — platform overview ad",
+    adRef: "Multi-channel selling \u2014 platform overview ad",
     faqQ: "Which sales channels does Shopify support?",
-    faqA: "Sell on your own site, Instagram, TikTok, Amazon, and in person — all managed from a single Shopify admin. No juggling multiple tools.",
+    faqA: "Sell on your own site, Instagram, TikTok, Amazon, and in person \u2014 all managed from a single Shopify admin. No juggling multiple tools.",
     features: [
-      { icon: "📱", title: "Social commerce", desc: "Tag products in posts, run shoppable ads, and sell directly inside social apps." },
-      { icon: "🏪", title: "POS integration", desc: "Accept in-person payments and sync inventory with your online store in real time." },
-      { icon: "🔄", title: "Marketplace sync", desc: "List products on Amazon, eBay, and Walmart — manage everything from Shopify." }
+      { icon: "\uD83D\uDCF1", title: "Social commerce", desc: "Tag products in posts, run shoppable ads, and sell directly inside social apps." },
+      { icon: "\uD83C\uDFEA", title: "POS integration", desc: "Accept in-person payments and sync inventory with your online store in real time." },
+      { icon: "\uD83D\uDD04", title: "Marketplace sync", desc: "List products on Amazon, eBay, and Walmart \u2014 manage everything from Shopify." }
     ]
   },
   {
     slug: "dropshipping",
     headline: "Start selling products today without managing inventory",
+    desc: "With Shopify\u2019s dropshipping integrations, suppliers ship directly to your customers.",
     chars: 54,
-    tier: "none",
-    tierLabel: "none",
+    tier: "none", tierLabel: "none",
     pattern: "Action + outcome",
-    adRef: "Dropshipping / low-barrier entry — aspiration ad",
+    adRef: "Dropshipping / low-barrier entry \u2014 aspiration ad",
     faqQ: "Do I need to buy inventory upfront?",
     faqA: "No. With Shopify\u2019s dropshipping integrations, suppliers ship directly to your customers. You focus on marketing and growing your brand.",
     features: [
-      { icon: "🚚", title: "Auto fulfillment", desc: "Orders route directly to suppliers. You never touch inventory or pack a box." },
-      { icon: "🔍", title: "Product sourcing", desc: "Browse millions of products from vetted suppliers and add them to your store instantly." },
-      { icon: "💰", title: "Low startup cost", desc: "No warehouse, no bulk orders. Pay for products only after you make a sale." }
+      { icon: "\uD83D\uDE9A", title: "Auto fulfillment", desc: "Orders route directly to suppliers. You never touch inventory or pack a box." },
+      { icon: "\uD83D\uDD0D", title: "Product sourcing", desc: "Browse millions of products from vetted suppliers and add them to your store instantly." },
+      { icon: "\uD83D\uDCB0", title: "Low startup cost", desc: "No warehouse, no bulk orders. Pay for products only after you make a sale." }
     ]
   },
   {
     slug: "mr-beast-shop",
     headline: "Scale your brand to millions of customers like MrBeast",
+    desc: "MrBeast built Feastables on Shopify \u2014 join millions of entrepreneurs doing the same.",
     chars: 54,
-    tier: "brand",
-    tierLabel: "brand",
+    tier: "brand", tierLabel: "brand",
     pattern: "Action + aspiration + Brand",
-    adRef: "MrBeast / Feastables — brand showcase ad",
+    adRef: "MrBeast / Feastables \u2014 brand showcase ad",
     faqQ: "Can Shopify handle high-volume sales?",
     faqA: "Shopify powers brands doing billions in sales, including flash drops and viral moments. Your store scales automatically with demand.",
     features: [
-      { icon: "🚀", title: "Unlimited scale", desc: "Handle flash sales and viral traffic without worrying about your store going down." },
-      { icon: "🌐", title: "Global CDN", desc: "Lightning-fast page loads for customers anywhere in the world, every time." },
-      { icon: "📊", title: "Advanced analytics", desc: "Track performance, customer behavior, and revenue with real-time reporting." }
+      { icon: "\uD83D\uDE80", title: "Unlimited scale", desc: "Handle flash sales and viral traffic without worrying about your store going down." },
+      { icon: "\uD83C\uDF10", title: "Global CDN", desc: "Lightning-fast page loads for customers anywhere in the world, every time." },
+      { icon: "\uD83D\uDCCA", title: "Advanced analytics", desc: "Track performance, customer behavior, and revenue with real-time reporting." }
     ]
   },
   {
     slug: "pos-retail",
     headline: "Sell in person and online from one unified platform",
+    desc: "Shopify POS syncs your inventory, orders, and customer data across every location.",
     chars: 51,
-    tier: "none",
-    tierLabel: "none",
+    tier: "none", tierLabel: "none",
     pattern: "Action + capability",
-    adRef: "Shopify POS / retail + online — product demo ad",
+    adRef: "Shopify POS / retail + online \u2014 product demo ad",
     faqQ: "Can I manage online and retail in one place?",
     faqA: "Yes. Shopify POS syncs your inventory, orders, and customer data across every location. One dashboard for everything.",
     features: [
-      { icon: "💳", title: "Tap to pay", desc: "Accept payments anywhere with Shopify\u2019s card reader or tap-to-pay on your phone." },
-      { icon: "📋", title: "Unified inventory", desc: "Real-time stock sync across all your locations and your online store." },
-      { icon: "👥", title: "Customer profiles", desc: "Track purchase history and preferences whether customers shop online or in store." }
+      { icon: "\uD83D\uDCB3", title: "Tap to pay", desc: "Accept payments anywhere with Shopify\u2019s card reader or tap-to-pay on your phone." },
+      { icon: "\uD83D\uDCCB", title: "Unified inventory", desc: "Real-time stock sync across all your locations and your online store." },
+      { icon: "\uD83D\uDC65", title: "Customer profiles", desc: "Track purchase history and preferences whether customers shop online or in store." }
     ]
   }
 ];
@@ -510,17 +423,15 @@ function showVariant(idx) {
   const v = VARIANTS[idx];
   document.getElementById('page-directory').classList.remove('active');
   document.querySelectorAll('.lp-page').forEach(p => p.classList.remove('active'));
-
   let page = document.getElementById('lp-' + v.slug);
   if (!page) {
     page = document.createElement('div');
     page.id = 'lp-' + v.slug;
     page.className = 'lp-page';
-    page.innerHTML = renderLP(v, idx);
+    page.innerHTML = renderLP(v);
     document.getElementById('lp-mount').appendChild(page);
   }
   page.classList.add('active');
-
   const tb = document.getElementById('dev-toolbar');
   tb.style.display = 'flex';
   document.getElementById('dt-slug').textContent = '/free-trial/' + v.slug;
@@ -528,7 +439,6 @@ function showVariant(idx) {
   const tierEl = document.getElementById('dt-tier');
   tierEl.textContent = v.tierLabel;
   tierEl.className = 'dt-tier ' + v.tier;
-
   window.scrollTo({ top: 0 });
   history.pushState(null, '', '#/free-trial/' + v.slug);
 }
@@ -536,50 +446,34 @@ function showVariant(idx) {
 function prevVariant() { showVariant((currentIdx - 1 + VARIANTS.length) % VARIANTS.length); }
 function nextVariant() { showVariant((currentIdx + 1) % VARIANTS.length); }
 
-function renderMosaic(offset) {
-  const tiles = [];
-  for (let i = 0; i < 24; i++) {
-    const img = TILE_IMAGES[(i + offset * 3) % TILE_IMAGES.length];
-    tiles.push(`<div class="lp-mosaic-tile" style="background-image:url('${img}')"></div>`);
-  }
-  return tiles.join('');
-}
-
-const ARROW_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
-
-const CHEVRON_SVG = `<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
-
-function renderLP(v, idx) {
+function renderLP(v) {
   return `
-    <!-- Hero -->
     <section class="lp-hero">
-      <div class="lp-mosaic">${renderMosaic(idx)}</div>
-
+      <div class="lp-hero-bg"></div>
       <div class="lp-logo">
-        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#95BF47"/><path d="M23.2 10.5c-.08-.08-.24-.12-.4-.12-.16 0-.48.04-.48.04l-1.36.08c-.08-.32-.24-.6-.44-.84-.64-.76-1.52-1.12-2.56-1.12h-.2c-.36-.44-.8-.64-1.2-.64-2.92 0-4.36 3.68-4.8 5.56l-3.4 1.04c-.6.2-.64.2-.72.76L6 26.4l13.4 2.32 7.24-1.56s-.88-16.2-.96-16.48l-.48-.18zm-4.52-.72c-.52.16-1.12.36-1.72.52 0-.4.04-.76.04-1.08.32-.44.64-.8.96-1.08.4.28.64.88.72 1.64zm-1.48-2c.36 0 .64.12.88.36-.68.36-1.32.92-1.6 1.68-.08.2-.12.52-.16.84l-1.44.44c.36-1.72 1.16-3.32 2.32-3.32zm.44 8.52s-.6-.32-1.36-.32c-1.08 0-1.12.68-1.12.84 0 .92 2.4 1.28 2.4 3.44 0 1.72-1.08 2.8-2.52 2.8-1.76 0-2.64-1.08-2.64-1.08l.48-1.6s.92.8 1.72.8c.52 0 .72-.4.72-.68 0-1.2-1.96-1.24-1.96-3.24 0-1.68 1.2-3.28 3.6-3.28.92 0 1.4.28 1.4.28l-.72 2.04z" fill="#fff"/></svg>
-        <span>shopify</span>
+        <img src="${SHOPIFY_LOGO}" alt="Shopify">
       </div>
-
-      <div class="lp-card">
-        <h1 class="lp-card-headline">${v.headline}</h1>
-        <p class="lp-card-sub">Start for free, keep building for <strong>$1/month</strong>.<br>Plus, earn up to $10,000 in credits as you sell.</p>
-        <div class="lp-card-label">Start for free</div>
-        <div class="lp-card-consent">You agree to receive marketing emails.</div>
-        <div class="lp-pill-form">
-          <input class="lp-pill-input" type="email" placeholder="Enter your email">
-          <button class="lp-pill-submit">${ARROW_SVG}</button>
+      <div class="lp-cards">
+        <div class="lp-white-card">
+          <h1>${v.headline}</h1>
+          <p>${v.desc}</p>
+        </div>
+        <div class="lp-dark-card">
+          <div class="lp-dark-card-title">Get your first 3 months free</div>
+          <div class="lp-dark-card-sub">Plus, earn up to $10,000 in Launch Rewards.</div>
+          <div class="lp-dark-card-consent">You agree to receive marketing emails.</div>
+          <div class="lp-pill-form">
+            <input class="lp-pill-input" type="email" placeholder="Enter your email address">
+            <button class="lp-pill-submit">${ARROW_SVG}</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Social Proof -->
-    <div class="lp-social">
-      <div class="lp-social-logos">
-        <span>Allbirds</span><span>Gymshark</span><span>Brooklinen</span><span>Leesa</span><span>Kylie Cosmetics</span><span>Crate&nbsp;&amp;&nbsp;Barrel</span>
-      </div>
+    <div class="lp-brands">
+      ${BRAND_LOGOS.map(l => `<img src="${l}" alt="Brand logo">`).join('')}
     </div>
 
-    <!-- Features -->
     <section class="lp-sections">
       <div class="lp-sections-header">
         <h2>Everything to start, sell, and grow</h2>
@@ -596,73 +490,53 @@ function renderLP(v, idx) {
       </div>
     </section>
 
-    <!-- Testimonial -->
     <div class="lp-testimonial">
       <div class="lp-testimonial-inner">
-        <blockquote>"We've tripled in size since we first started on Shopify. It gives us the tools we need to keep pushing forward."</blockquote>
+        <blockquote>\u201CWe\u2019ve tripled in size since we first started on Shopify. It gives us the tools we need to keep pushing forward.\u201D</blockquote>
         <cite>Clare Jerome, NEOM Wellbeing</cite>
       </div>
     </div>
 
-    <!-- FAQ -->
     <section class="lp-faq">
       <h2>Questions?</h2>
-      <p class="lp-faq-sub">Everything you need to know to get started.</p>
       <div class="faq-item open">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          ${v.faqQ}
-          ${CHEVRON_SVG}
-        </div>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">${v.faqQ}${CHEVRON_SVG}</div>
         <div class="faq-a">${v.faqA}</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          What is Shopify and how does it work?
-          ${CHEVRON_SVG}
-        </div>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is Shopify and how does it work?${CHEVRON_SVG}</div>
         <div class="faq-a">Shopify is a complete commerce platform that lets you start, grow, and manage a business. Create an online store, sell across social media and marketplaces, and manage everything from one dashboard.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          How much does Shopify cost?
-          ${CHEVRON_SVG}
-        </div>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does Shopify cost?${CHEVRON_SVG}</div>
         <div class="faq-a">Try Shopify free for 3 days, no credit card required. After your trial, choose a plan that suits the size and stage of your business.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          Can I use my own domain name with Shopify?
-          ${CHEVRON_SVG}
-        </div>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I use my own domain name with Shopify?${CHEVRON_SVG}</div>
         <div class="faq-a">Yes. Connect a domain you already own or buy a new one through Shopify. Setup takes just a few clicks from your admin.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          Do I need to be a designer or developer to use Shopify?
-          ${CHEVRON_SVG}
-        </div>
-        <div class="faq-a">No. Shopify is designed so anyone can build a professional store — customize themes, add apps, and launch without writing a single line of code.</div>
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to be a designer or developer to use Shopify?${CHEVRON_SVG}</div>
+        <div class="faq-a">No. Shopify is designed so anyone can build a professional store \u2014 customize themes, add apps, and launch without writing a single line of code.</div>
       </div>
     </section>
 
-    <!-- Bottom CTA -->
     <section class="lp-bottom">
       <div class="lp-bottom-inner">
         <h2>No risk, all rewards</h2>
-        <p>Try Shopify for <strong>$1/month</strong>. Plus, earn up to $10,000 in credits as you sell.</p>
+        <p>Try Shopify free. Plus, earn up to $10,000 in credits as you sell.</p>
         <div class="lp-pill-form">
-          <input class="lp-pill-input" type="email" placeholder="Enter your email">
+          <input class="lp-pill-input" type="email" placeholder="Enter your email address">
           <button class="lp-pill-submit">${ARROW_SVG}</button>
         </div>
-        <div class="lp-card-consent">You agree to receive marketing emails.</div>
+        <div class="lp-bottom-consent">You agree to receive marketing emails.</div>
       </div>
     </section>
   `;
 }
 
 function renderDirectory() {
-  const grid = document.getElementById('dir-grid');
-  grid.innerHTML = VARIANTS.map((v, i) => `
+  document.getElementById('dir-grid').innerHTML = VARIANTS.map((v, i) => `
     <a class="dir-card" onclick="showVariant(${i})">
       <span class="dir-card-chars">${v.chars} chars</span>
       <div class="dir-card-top">
@@ -695,7 +569,6 @@ window.addEventListener('keydown', (e) => {
 });
 
 renderDirectory();
-
 const initHash = location.hash.replace('#', '');
 if (initHash.startsWith('/free-trial/')) {
   const idx = VARIANTS.findIndex(v => v.slug === initHash.replace('/free-trial/', ''));
